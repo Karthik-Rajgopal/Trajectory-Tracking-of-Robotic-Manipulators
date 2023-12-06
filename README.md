@@ -23,6 +23,7 @@ The full control scheme with the Proportional-Derivative control is shown in Fig
 $$\ddot{q} = M^{-1}(u - C(q, \dot{q}) \dot{q} - F_{v} \dot{q} - g(q))$$
 This value is indeed computed in the nominal <em>Robot model scheme</em> block, which takes as input the control command $u$ and that outputs joints acceleration $\ddot{q}$. Velocity ($\dot{q}$) and position ($q$) values of the joints are then obtained using a double integrator as highlighted in the scheme.
 ![PD Control architecture](https://github.com/Karthik-Rajgopal/Trajectory-Tracking-of-Robotic-Manipulators/blob/main/PID.png)
+
 From these computed quantities, the PD controller makes use of $q_{d}$ and $q$, whose difference produces the current error $e(t)$. Taking the derivative of the error $\dot{e}(t) = \frac{de}{dt}$, it's possible to compute the control law. In general, the advantage of using a PD controller (also in a nonlinear system) is that it is able to reduce as much as possible the error dynamics of the system,
 compensating for a possible external disturbance or model mismatch. This is due to the fact that PD control guarantees global stability and so the convergence of an output signal to a desired one. Moreover, this controller is an example of independent and model-free control. This is easy verifiable looking at the control law and noting that it doesn't depend on robot's model.
 
