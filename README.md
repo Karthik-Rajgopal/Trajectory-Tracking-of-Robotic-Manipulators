@@ -22,9 +22,11 @@ $$u(t)=K_{p}e(t)+K_{d}\dot{e}(t)$$
 The full control scheme with the Proportional-Derivative control is shown in the following figure. The PD controller produces a command control that is given as input to the manipulator nominal model shown in Eq. 1. Inverting the Euler-Lagrange equation and substituting $\tau = u$, we get $\ddot{q}$ as:
 $$\ddot{q} = M^{-1}(u - C(q, \dot{q}) \dot{q} - F_{v} \dot{q} - g(q))$$
 This value is indeed computed in the nominal <em>Robot model scheme</em> block, which takes as input the control command $u$ and outputs joints acceleration $\ddot{q}$. Velocity ($\dot{q}$) and position ($q$) values of the joints are then obtained using a double integrator as highlighted in the scheme.
+
 <div align="center">
-![PD Control architecture](https://github.com/Karthik-Rajgopal/Trajectory-Tracking-of-Robotic-Manipulators/blob/main/PID.png)
-</div>
+<img src="https://github.com/Karthik-Rajgopal/Trajectory-Tracking-of-Robotic-Manipulators/blob/main/PID.png" width="500">
+</div><br>
+
 From these computed quantities, the PD controller makes use of $q_{d}$ and $q$, whose difference produces the current error $e(t)$. Taking the derivative of the error $\dot{e}(t) = \frac{de}{dt}$, it's possible to compute the control law. In general, the advantage of using a PD controller (also in a nonlinear system) is that it can reduce as much as possible the error dynamics of the system,
 compensating for a possible external disturbance or model mismatch. This is because PD control guarantees global stability and the convergence of an output signal to a desired one. Moreover, this controller is an example of independent and model-free control. This is easily verifiable looking at the control law and noting that it doesn't depend on the robot's model.
 
